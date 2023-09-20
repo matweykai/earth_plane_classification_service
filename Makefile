@@ -13,6 +13,10 @@ setup:
 
 	pip install -r requirements.txt
 
+pull_weights:
+	$(ACTIVATE_VENV)
+	dvc pull -R weights
+
 check_linter:
 	$(ACTIVATE_VENV)
 	flake8 src

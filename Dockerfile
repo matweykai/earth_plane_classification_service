@@ -15,6 +15,7 @@ COPY weights weights
 COPY app.py app.py
 COPY config config
 COPY src src
+COPY Makefile Makefile
 
 ENV PYTHONPATH /app
 ENV API_PORT 5000

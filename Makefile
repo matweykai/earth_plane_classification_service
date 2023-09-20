@@ -14,3 +14,7 @@ check_linter:
 run_server:
 	$(ACTIVATE_VENV)
 	$(CALL_CMD) app.py
+
+run_tests:
+	$(ACTIVATE_VENV)
+	$(CALL_CMD) -m pytest tests

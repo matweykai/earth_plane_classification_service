@@ -33,7 +33,7 @@ class ForestClassifier:
         """
         preprocessed_image = self._preprocess_image(image)
 
-        prediction = self.session.run(None, {'input': preprocessed_image})
+        prediction = self.session.run(None, {'input': preprocessed_image})[0]
 
         return sigmoid(prediction)
 

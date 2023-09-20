@@ -9,11 +9,11 @@ class AppContainer(containers.DeclarativeContainer):
 
     forest_classifier = providers.Singleton(
         ForestClassifier,
-        config=config.classifier,
+        config=config.services.classifier,
     )
 
     forest_analyzer = providers.Singleton(
         ForestAnalyzer,
-        config=config.forest_analyzer,
+        config=config.services.forest_analyzer,
         classifier=forest_classifier,
     )

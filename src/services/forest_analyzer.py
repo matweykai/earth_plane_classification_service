@@ -18,8 +18,8 @@ class ForestAnalyzer:
         if class_names_count != tags_thresholds_count:
             raise ValueError(f'Class names count({class_names_count}) != tags thresholds count!({tags_thresholds_count})')  # noqa: E501
 
-        self._class_names_list = config['class_names']
-        self._thresholds = config['tags_thresholds']
+        self._class_names_list = list(config['class_names'])
+        self._thresholds = list(map(float, config['tags_thresholds']))
         self._classifier = classifier
 
     def predict(self, image: np.ndarray) -> list[str]:
@@ -45,6 +45,6 @@ class ForestAnalyzer:
         Returns:
             dict[str, float]: dictionary of {tag: score} items
         """
-        raw_prediction = self._classifier.predict(image)
+        raw_pred = np.squeeze(self._classifier.predict(image))
 
-        return {self._class_names_list[class_ind]: class_prob for class_ind, class_prob in enumerate(raw_prediction)}
+        return {self._class_names_list[class_ind]: float(class_prob) for class_ind, class_prob in enumerate(raw_pred)}  # noqa: WPS221 E501

@@ -9,7 +9,7 @@ from src.containers.containers import AppContainer
 from src.services.forest_analyzer import ForestAnalyzer
 
 
-@router.get('/predict')
+@router.post('/predict')
 @inject
 def predict(
     image: bytes = File(),
@@ -20,7 +20,7 @@ def predict(
     return PredictAnswer(tags=service.predict(img))
 
 
-@router.get('/predict_proba')
+@router.post('/predict_proba')
 @inject
 def predict_proba(
     image: bytes = File(),

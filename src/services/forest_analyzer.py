@@ -31,7 +31,8 @@ class ForestAnalyzer:
         Returns:
             list[str]: list of tags
         """
-        raw_prediction = self._classifier.predict(image)
+        raw_prediction = self._classifier.predict(image)[0]
+
         filtered_pred_arr = np.where(raw_prediction >= self._thresholds)[0]
 
         return [self._class_names_list[class_ind] for class_ind in filtered_pred_arr]

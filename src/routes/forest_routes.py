@@ -3,6 +3,7 @@ import numpy as np
 from dependency_injector.wiring import Provide, inject
 from fastapi import Depends, File
 
+from src.schemas.forest_route import PredictAnswer, PredictProbaAnswer
 from src.routes.routers import router
 from src.containers.containers import AppContainer
 from src.services.forest_analyzer import ForestAnalyzer
@@ -13,12 +14,10 @@ from src.services.forest_analyzer import ForestAnalyzer
 def predict(
     image: bytes = File(),
     service: ForestAnalyzer = Depends(Provide[AppContainer.forest_analyzer]),
-):
+) -> PredictAnswer:
     img = cv2.imdecode(np.frombuffer(image, np.uint8), cv2.IMREAD_COLOR)
 
-    return {
-        'tags': service.predict(img),
-    }
+    return PredictAnswer(tags=service.predict(img))
 
 
 @router.get('/predict_proba')
@@ -26,9 +25,7 @@ def predict(
 def predict_proba(
     image: bytes = File(),
     service: ForestAnalyzer = Depends(Provide[AppContainer.forest_analyzer]),
-):
+) -> PredictProbaAnswer:
     img = cv2.imdecode(np.frombuffer(image, np.uint8), cv2.IMREAD_COLOR)
 
-    return {
-        'tags_probs': service.predict_proba(img),
-    }
+    return PredictProbaAnswer(tags_probs=service.predict_proba(img))

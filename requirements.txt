@@ -1,3 +1,6 @@
 fastapi==0.103.1
 pydantic==2.3.0
 wemake-python-styleguide==0.18.0
+onnxruntime==1.16.0
+onnx==1.14.1
+opencv-python==4.8.0.76

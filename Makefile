@@ -7,6 +7,12 @@ export HOST = 0.0.0.0
 SHELL := /bin/bash
 .ONESHELL:
 
+setup:
+	python3 -m venv .venv
+	$(ACTIVATE_VENV) && \
+
+	pip install -r requirements.txt
+
 check_linter:
 	$(ACTIVATE_VENV)
 	flake8 src

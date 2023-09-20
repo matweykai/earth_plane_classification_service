@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import onnxruntime as ort
 
-from services.classifier_utils import normalize_cv2, sigmoid
+from src.services.classifier_utils import normalize_cv2, sigmoid
 
 
 class ForestClassifier:

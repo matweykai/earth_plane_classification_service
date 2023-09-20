@@ -15,7 +15,7 @@ setup:
 
 pull_weights:
 	$(ACTIVATE_VENV)
-	dvc pull -R weights
+	dvc pull -R weights.dvc
 
 check_linter:
 	$(ACTIVATE_VENV)

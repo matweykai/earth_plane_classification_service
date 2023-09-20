@@ -18,3 +18,11 @@ run_server:
 run_tests:
 	$(ACTIVATE_VENV)
 	$(CALL_CMD) -m pytest tests
+
+run_docker:
+	docker build -t forest_service .
+	docker run -p $(API_PORT):$(API_PORT) -d --name forest_container forest_service
+
+stop_docker:
+	docker stop forest_container
+	docker container rm forest_container

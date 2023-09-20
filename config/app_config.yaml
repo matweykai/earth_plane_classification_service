@@ -1,8 +1,44 @@
 services:
   classifier:
-    weights:
+    weights: 'weights/prod_model_v1.0.onnx'
     img_size:
+      - 256
+      - 256
 
   forest_analyzer:
     class_names:
+      - 'clear'
+      - 'partly_cloudy'
+      - 'cloudy'
+      - 'haze'
+      - 'agriculture'
+      - 'cultivation'
+      - 'bare_ground'
+      - 'conventional_mine'
+      - 'artisinal_mine'
+      - 'primary'
+      - 'blooming'
+      - 'selective_logging'
+      - 'blow_down'
+      - 'slash_burn'
+      - 'habitation'
+      - 'water'
+      - 'road'
     tags_thresholds:
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5
+      - 0.5

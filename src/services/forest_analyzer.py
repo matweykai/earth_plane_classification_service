@@ -4,7 +4,7 @@ from src.services.forest_classifier import ForestClassifier
 
 
 class ForestAnalyzer:
-    def __init__(self, classes_list: list[str], thresholds_list: list[float], classifier: ForestClassifier) -> None:
+    def __init__(self, config: dict, classifier: ForestClassifier) -> None:
         """Inits Forest analyzer service
 
         Args:
@@ -12,8 +12,8 @@ class ForestAnalyzer:
             thresholds_list (list[float]): list of thresholds for each tag
             classifier (ForestClassifier): classifier object for making predictions
         """
-        self._class_names_list = classes_list
-        self._thresholds = np.array(thresholds_list)
+        self._class_names_list = config['class_names']
+        self._thresholds = config['tags_thresholds']
         self._classifier = classifier
 
     def predict(self, image: np.ndarray) -> list[str]:

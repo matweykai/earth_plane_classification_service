@@ -4,3 +4,4 @@ wemake-python-styleguide==0.18.0
 onnxruntime==1.16.0
 onnx==1.14.1
 opencv-python==4.8.0.76
+dependency-injector==4.41.0

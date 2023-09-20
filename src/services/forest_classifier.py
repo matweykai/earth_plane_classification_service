@@ -6,13 +6,16 @@ from services.classifier_utils import normalize_cv2, sigmoid
 
 
 class ForestClassifier:
-    def __init__(self, weights_path: str, img_size: tuple[int, int]) -> None:
+    def __init__(self, config: dict) -> None:
         """Inits ForestClassifier class with ONNX model
 
         Args:
             weights_path (str): path to onnx model
             img_size (tuple[int, int]): image size for the model
         """
+        weights_path = config['weights']
+        img_size = config['img_size']
+
         self.session = ort.InferenceSession(
             path_or_bytes=weights_path,
             providers=['CPUExecutionProvider'],

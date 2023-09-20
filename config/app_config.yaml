@@ -1,0 +1,8 @@
+services:
+  classifier:
+    weights:
+    img_size:
+
+  forest_analyzer:
+    class_names:
+    tags_thresholds:

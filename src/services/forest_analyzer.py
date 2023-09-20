@@ -12,6 +12,12 @@ class ForestAnalyzer:
             thresholds_list (list[float]): list of thresholds for each tag
             classifier (ForestClassifier): classifier object for making predictions
         """
+        class_names_count = len(config['class_names'])
+        tags_thresholds_count = len(config['tags_thresholds'])
+
+        if class_names_count != tags_thresholds_count:
+            raise ValueError(f'Class names count({class_names_count}) != tags thresholds count!({tags_thresholds_count})')  # noqa: E501
+
         self._class_names_list = config['class_names']
         self._thresholds = config['tags_thresholds']
         self._classifier = classifier

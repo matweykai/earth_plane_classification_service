@@ -12,6 +12,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY weights weights
+COPY setup.cfg
 COPY app.py app.py
 COPY config config
 COPY src src

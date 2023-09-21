@@ -14,6 +14,7 @@ RUN pip install -r requirements.txt
 COPY weights weights
 COPY setup.cfg setup.cfg
 COPY app.py app.py
+COPY tests tests
 COPY config config
 COPY src src
 COPY Makefile Makefile

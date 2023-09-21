@@ -36,3 +36,16 @@ run_docker:
 stop_docker:
 	docker stop forest_container
 	docker container rm forest_container
+
+deploy:
+	ansible-playbook -i deploy/ansible/inventory.ini  deploy/ansible/deploy.yml \
+		-e host=$(DEPLOY_HOST) \
+		-e docker_image=$(DOCKER_IMAGE) \
+		-e docker_tag=$(DOCKER_TAG) \
+		-e docker_registry_user=$(CI_REGISTRY_USER) \
+		-e docker_registry_password=$(CI_REGISTRY_PASSWORD) \
+		-e docker_registry=$(CI_REGISTRY) \
+
+destroy:
+	ansible-playbook -i deploy/ansible/inventory.ini  deploy/ansible/destroy.yml \
+		-e host=$(DEPLOY_HOST)
